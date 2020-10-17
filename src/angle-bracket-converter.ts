@@ -537,7 +537,7 @@ export async function convertFileToAngleBrackets() {
       editBuilder.replace(range, transformed);
     });
   } catch (error) {
-    await vscode.window.showErrorMessage(
+    vscode.window.showErrorMessage(
       "Angle Bracket Conversion failed\nEnsure your selection is valid handlebars"
     );
   }
@@ -557,7 +557,7 @@ export async function convertSelectionToAngleBrackets() {
       editBuilder.replace(selection, transformed);
     });
   } catch (error) {
-    await vscode.window.showErrorMessage(
+    vscode.window.showErrorMessage(
       "Angle Bracket Conversion failed\nEnsure your selection is valid handlebars"
     );
   }
