@@ -20,7 +20,7 @@
 		"commands": [
 			{
 				"command": "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets",
-				"title": "Convert to AngleBrackets"
+				"title": "Convert File to AngleBrackets"
 			},
 			{
 				"command": "vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets",
