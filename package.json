@@ -4,7 +4,7 @@
 	"description": "Convert components to AngleBracket syntax",
 	"publisher": "mfeckies",
 	"repository": "https://github.com/mfeckie/vscode-ember-angle-brackets-converter",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
