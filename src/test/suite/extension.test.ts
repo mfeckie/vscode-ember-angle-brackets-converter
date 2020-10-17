@@ -9,36 +9,68 @@ import * as vscode from "vscode";
 
 const fixturePath = path.join(__dirname, "test-fixtures");
 
-function getFixtures(filename: string) {
+interface Fixture {
+  infilePath: string;
+  outfilePath: string;
+  infile: string;
+  outfile: string;
+}
+
+function getFixtures(filename: string): Fixture {
   const infilePath = path.join(fixturePath, filename + ".in.hbs");
   const outfilePath = path.join(fixturePath, filename + ".out.hbs");
 
   return {
     infilePath,
+    outfilePath,
     infile: fs.readFileSync(infilePath, { encoding: "utf8" }),
     outfile: fs.readFileSync(outfilePath, { encoding: "utf8" }),
   };
 }
 
-async function loadFixture(fixture: any) {
-  const uri = vscode.Uri.file(fixture.infilePath);
-  const document = await vscode.workspace.openTextDocument(uri);
+async function loadFixture(fixture: Fixture) {
+  const document = await vscode.workspace.openTextDocument(fixture.infilePath);
   await vscode.window.showTextDocument(document);
-  return document;
 }
 
 suite("Extension Test Suite", () => {
   vscode.window.showInformationMessage("Start all tests.");
 
   test("Simple", async () => {
-		const fixtures = getFixtures('simple');
-		const document = await loadFixture(fixtures);
+    const fixtures = getFixtures("simple");
+    await loadFixture(fixtures);
 
-		assert.strictEqual(document.getText(), fixtures.infile);
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
 
-		await vscode.commands.executeCommand('editor.action.convertToAngleBrackets');
+    await vscode.commands.executeCommand(
+      "ember-angle-brackets-converter.convertFileToAngleBrackets"
+    );
 
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.outfile
+    );
+  });
 
-		assert.strictEqual(document.getText(), fixtures.outfile);
+  test("with params", async () => {
+    const fixtures = getFixtures("complex");
+    await loadFixture(fixtures);
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
+
+    await vscode.commands.executeCommand(
+      "ember-angle-brackets-converter.convertFileToAngleBrackets"
+    );
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.outfile
+    );
   });
 });

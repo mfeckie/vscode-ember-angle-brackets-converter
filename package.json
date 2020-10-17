@@ -10,21 +10,21 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:ember-angle-brackets-converter.helloWorld"
+		"onCommand:ember-angle-brackets-converter.convertFileToAngleBrackets"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "ember-angle-brackets-converter.helloWorld",
-				"title": "Hello World"
+				"command": "ember-angle-brackets-converter.convertFileToAngleBrackets",
+				"title": "Convert to AngleBrackets"
 			}
 		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
 		"compile": "tsc -p ./",
-		"copyFixtures": "cp -R .//src/test/suite/test-fixtures ./out/test/suite/test-fixtures",
+		"copyFixtures": "cp -R ./src/test/suite/test-fixtures/ ./out/test/suite/test-fixtures/",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile && yarn run lint && yarn run copyFixtures",
