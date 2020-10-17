@@ -530,12 +530,17 @@ export async function convertFileToAngleBrackets() {
   if (!text) {
     return;
   }
-  const transformed = transform({ source: text });
-
-  await textEditor.edit((editBuilder) => {
-    const range = fullDocumentRange(document);
-    editBuilder.replace(range, transformed);
-  });
+  try {
+    const transformed = transform({ source: text });
+    await textEditor.edit((editBuilder) => {
+      const range = fullDocumentRange(document);
+      editBuilder.replace(range, transformed);
+    });
+  } catch (error) {
+    await vscode.window.showErrorMessage(
+      "Angle Bracket Conversion failed\nEnsure your selection is valid handlebars"
+    );
+  }
 }
 
 export async function convertSelectionToAngleBrackets() {
@@ -546,11 +551,16 @@ export async function convertSelectionToAngleBrackets() {
   if (!text) {
     return;
   }
-  const transformed = transform({ source: text });
-
-  await textEditor.edit((editBuilder) => {
-    editBuilder.replace(selection, transformed);
-  });
+  try {
+    const transformed = transform({ source: text });
+    await textEditor.edit((editBuilder) => {
+      editBuilder.replace(selection, transformed);
+    });
+  } catch (error) {
+    await vscode.window.showErrorMessage(
+      "Angle Bracket Conversion failed\nEnsure your selection is valid handlebars"
+    );
+  }
 }
 
 export default {};

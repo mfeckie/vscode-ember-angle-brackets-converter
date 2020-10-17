@@ -94,4 +94,25 @@ suite("Extension Test Suite", () => {
       fixtures.outfile
     );
   });
+
+  test("For invalid selections", async () => {
+    const fixtures = getFixtures("invalid-selection");
+    await loadFixture(fixtures);
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
+
+    vscode.window.activeTextEditor.selection = new vscode.Selection(1, 2, 1, 31);
+
+    await vscode.commands.executeCommand(
+      "ember-angle-brackets-converter.convertSelectionToAngleBrackets"
+    );
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
+  });
 });
