@@ -7,6 +7,11 @@ const _EMPTY_STRING_ = `ANGLE_BRACKET_EMPTY_${Date.now()}`;
 const { builders: b } = recast;
 
 /**
+ * This code is almost 1 for 1 from https://github.com/ember-codemods/ember-angle-brackets-codemod
+ * It has been updated to work with vscode rather than codemod cli
+ */
+
+/**
  * List of HTML attributes for which @ should not be appended
  */
 const HTML_ATTRIBUTES = ["class", "placeholder", "required"];
