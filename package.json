@@ -1,7 +1,8 @@
 {
-	"name": "ember-angle-brackets-converter",
-	"displayName": "ember-angle-brackets-converter",
+	"name": "vscode-ember-angle-brackets-converter",
+	"displayName": "vscode-ember-angle-brackets-converter",
 	"description": "Convert components to AngleBracket syntax",
+	"publisher": "mfeckies",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.50.0"
@@ -10,18 +11,18 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:ember-angle-brackets-converter.convertFileToAngleBrackets",
-		"onCommand:ember-angle-brackets-converter.convertSelectionToAngleBrackets"
+		"onCommand:vscode-ember-angle-brackets-converter.convertFileToAngleBrackets",
+		"onCommand:vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "ember-angle-brackets-converter.convertFileToAngleBrackets",
+				"command": "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets",
 				"title": "Convert to AngleBrackets"
 			},
 			{
-				"command": "ember-angle-brackets-converter.convertSelectionToAngleBrackets",
+				"command": "vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets",
 				"title": "Convert selection to AngleBrackets"
 			}
 		]

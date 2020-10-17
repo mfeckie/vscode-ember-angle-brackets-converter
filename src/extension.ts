@@ -7,14 +7,14 @@ import {
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "ember-angle-brackets-converter.convertFileToAngleBrackets",
+      "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets",
       convertFileToAngleBrackets
     )
   );
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "ember-angle-brackets-converter.convertSelectionToAngleBrackets",
+      "vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets",
       convertSelectionToAngleBrackets
     )
   );

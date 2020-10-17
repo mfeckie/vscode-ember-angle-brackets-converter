@@ -1,6 +1,6 @@
-# ember-angle-brackets-converter README
+# vscode-ember-angle-brackets-converter README
 
-This is the README for your extension "ember-angle-brackets-converter". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "vscode-ember-angle-brackets-converter". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

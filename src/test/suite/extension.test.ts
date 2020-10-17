@@ -46,7 +46,7 @@ suite("Extension Test Suite", () => {
     );
 
     await vscode.commands.executeCommand(
-      "ember-angle-brackets-converter.convertFileToAngleBrackets"
+      "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets"
     );
 
     assert.strictEqual(
@@ -65,7 +65,7 @@ suite("Extension Test Suite", () => {
     );
 
     await vscode.commands.executeCommand(
-      "ember-angle-brackets-converter.convertFileToAngleBrackets"
+      "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets"
     );
 
     assert.strictEqual(
@@ -86,7 +86,7 @@ suite("Extension Test Suite", () => {
     vscode.window.activeTextEditor.selection = new vscode.Selection(1, 2, 1, 37);
 
     await vscode.commands.executeCommand(
-      "ember-angle-brackets-converter.convertSelectionToAngleBrackets"
+      "vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets"
     );
 
     assert.strictEqual(
@@ -107,7 +107,7 @@ suite("Extension Test Suite", () => {
     vscode.window.activeTextEditor.selection = new vscode.Selection(1, 2, 1, 31);
 
     await vscode.commands.executeCommand(
-      "ember-angle-brackets-converter.convertSelectionToAngleBrackets"
+      "vscode-ember-angle-brackets-converter.convertSelectionToAngleBrackets"
     );
 
     assert.strictEqual(
@@ -126,7 +126,7 @@ suite("Extension Test Suite", () => {
     );
 
     await vscode.commands.executeCommand(
-      "ember-angle-brackets-converter.convertFileToAngleBrackets"
+      "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets"
     );
 
     assert.strictEqual(
