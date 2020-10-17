@@ -523,7 +523,7 @@ function fullDocumentRange(document: TextDocument): Range {
   const lastLineId = document.lineCount - 1;
   return new Range(0, 0, lastLineId, document.lineAt(lastLineId).text.length);
 }
-export async function  convertFileToAngleBrackets() {
+export async function convertFileToAngleBrackets() {
   const textEditor = vscode.window.activeTextEditor;
   const document = textEditor.document;
   const text = textEditor?.document.getText();
@@ -535,6 +535,21 @@ export async function  convertFileToAngleBrackets() {
   await textEditor.edit((editBuilder) => {
     const range = fullDocumentRange(document);
     editBuilder.replace(range, transformed);
+  });
+}
+
+export async function convertSelectionToAngleBrackets() {
+  const textEditor = vscode.window.activeTextEditor;
+  const document = textEditor.document;
+  const selection = textEditor.selection;
+  const text = document.getText(selection);
+  if (!text) {
+    return;
+  }
+  const transformed = transform({ source: text });
+
+  await textEditor.edit((editBuilder) => {
+    editBuilder.replace(selection, transformed);
   });
 }
 

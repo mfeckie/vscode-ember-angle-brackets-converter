@@ -73,4 +73,25 @@ suite("Extension Test Suite", () => {
       fixtures.outfile
     );
   });
+
+  test("For selections", async () => {
+    const fixtures = getFixtures("selection");
+    await loadFixture(fixtures);
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
+
+    vscode.window.activeTextEditor.selection = new vscode.Selection(1, 2, 1, 37);
+
+    await vscode.commands.executeCommand(
+      "ember-angle-brackets-converter.convertSelectionToAngleBrackets"
+    );
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.outfile
+    );
+  });
 });

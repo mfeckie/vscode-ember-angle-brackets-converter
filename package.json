@@ -10,7 +10,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:ember-angle-brackets-converter.convertFileToAngleBrackets"
+		"onCommand:ember-angle-brackets-converter.convertFileToAngleBrackets",
+		"onCommand:ember-angle-brackets-converter.convertSelectionToAngleBrackets"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -18,6 +19,10 @@
 			{
 				"command": "ember-angle-brackets-converter.convertFileToAngleBrackets",
 				"title": "Convert to AngleBrackets"
+			},
+			{
+				"command": "ember-angle-brackets-converter.convertSelectionToAngleBrackets",
+				"title": "Convert selection to AngleBrackets"
 			}
 		]
 	},
