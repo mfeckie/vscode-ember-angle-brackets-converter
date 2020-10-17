@@ -134,4 +134,23 @@ suite("Extension Test Suite", () => {
       fixtures.outfile
     );
   });
+
+  test("Handles nested modules components", async () => {
+    const fixtures = getFixtures("nested-module");
+    await loadFixture(fixtures);
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.infile
+    );
+
+    await vscode.commands.executeCommand(
+      "vscode-ember-angle-brackets-converter.convertFileToAngleBrackets"
+    );
+
+    assert.strictEqual(
+      vscode.window.activeTextEditor.document.getText(),
+      fixtures.outfile
+    );
+  });
 });
