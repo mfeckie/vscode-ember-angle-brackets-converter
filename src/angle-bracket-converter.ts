@@ -311,25 +311,6 @@ function transformLinkToAttrs(params) {
   return attributes.concat(dataAttributes);
 }
 
-function hasValuelessDataParams(params) {
-  return getDataAttributesFromParams(params).length > 0;
-}
-
-/**
- *
- * data-* attributes are generally omitted,
- * but this config allows including nodes with data-test-* attributes.
- */
-function shouldSkipDataTestParams(params, includeValuelessDataTestAttributes) {
-  if (includeValuelessDataTestAttributes) {
-    const dataAttrs = getDataAttributesFromParams(params);
-    // This is true for nodes with data-* attributes too,
-    // as long as there is one with data-test-* attribute.
-    return !dataAttrs.some((attr) => attr.original.startsWith("data-test-"));
-  }
-  return true;
-}
-
 function transformNodeAttributes(tagName, node, config) {
   let attributes = transformAttrs(tagName, node.hash.pairs, config);
   return node.params.concat(attributes);
@@ -376,15 +357,6 @@ function nodeHasPositionalParameters(node) {
 }
 
 function transformNode(node, fileInfo, config) {
-  if (
-    hasValuelessDataParams(node.params) &&
-    shouldSkipDataTestParams(
-      node.params,
-      config.includeValuelessDataTestAttributes
-    )
-  ) {
-    return;
-  }
   let selfClosing = node.type !== "BlockStatement";
   const tagName = node.path.original;
 
