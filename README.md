@@ -7,6 +7,10 @@ This extension is aimed at Ember developers who are in the process of converting
 - Format whole file
 - Format selection
 
+## Example
+
+![Example Video](./images/AngleBrackets.gif)
+
 ## Known Issues
 
 The converter does not handle formatting / prettier for the transformed code, you will need to deal with this through your normal methods
